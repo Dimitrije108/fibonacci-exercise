@@ -6,7 +6,7 @@ function fibs(n) {
   let a = 0;
   let b = 1;
   let c = 0;
-  for (let i = 1; i <= n; i++) {
+  for (let i = 2; i < n; i++) {
     c = a + b;
     a = b;
     b = c;
@@ -15,14 +15,19 @@ function fibs(n) {
   return array;
 }
 
-console.log(fibs(12));
+console.log(fibs(7));
 
-// function fibs(n) {
-//   if (n < 2) {
-//     return n;
-//   } else {
-//     return fibs(n - 1) + fibs(n - 2);
-//   }
-// }
+function fibsRec(n) {
+  let array = [0, 1];
+  if (n === 2) {
+    return array;
+  } else {
+    let result = fibsRec(n - 1);
+    let a = result[result.length - 1];
+    let b = result[result.length - 2];
+    result.push(a + b);
+    return result;
+  }
+}
 
-// console.log(fibs(7));
+console.log(fibsRec(7));
